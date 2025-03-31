@@ -3,6 +3,7 @@ using UnityEngine;
 public class DanoAoInimigo : MonoBehaviour
 {
     private float vida = 100; //Vida total do inimigo
+    public GameObject explosao; //GameObject da explosao 
 
     //Capta a colisao do objeto ao entrar no outro objeto
     private void OnTriggerEnter2D(Collider2D colisao)
@@ -20,8 +21,20 @@ public class DanoAoInimigo : MonoBehaviour
             if(vida <= 0)
             {
                 //Destruir o inimigo
-                Destroy(gameObject);
+                DestruirInimigo();
             }
         }
+    }
+
+    public void DestruirInimigo()
+    {
+        //Instanciar o gameObject da explosao
+        GameObject novaExplosao = Instantiate(explosao);
+        
+        //Colocar o gameObject da explosao na mesma posição do inimigo
+        novaExplosao.transform.position = transform.position;
+
+        //Destruir o objeto
+        Destroy(gameObject);
     }
 }
