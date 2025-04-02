@@ -38,6 +38,7 @@ public class ColetarPontos : MonoBehaviour
         if (colisao.gameObject.tag == "Player")
         {
             //Atribuir pontuação no jogo
+            FindFirstObjectByType<CanvasGameMng>().IncrementarPontuacao(pontuacao);
 
             //Destruir o objeto
             Destroy(gameObject);
