@@ -16,6 +16,9 @@ public class CanvasGameMng : MonoBehaviour
 
         //Atualizar o texto da pontuação
         txtPontuacao.text = $"{pontuacao}";
+
+        //Definir a quantidade de vidas que o jogador terá de inicio
+        vidaJogador = vidasPlayer.Length;
     }
 
     public void IncrementarPontuacao(int pontuacao)
@@ -25,5 +28,26 @@ public class CanvasGameMng : MonoBehaviour
 
         //Atualiza o texto da pontuação
         txtPontuacao.text = $"{this.pontuacao}";
+    }
+
+    public void DecrementarVidaJogador()
+    {
+        //Verificar se o jogador tem vidas
+        if(vidaJogador == 1)
+        {
+            //Desabilitar a ultima vida
+            vidasPlayer[0].SetActive(false);
+
+            //Matar Jogador
+            FindFirstObjectByType<DanoPlayer>().DestruirPlayer();
+        }
+        else
+        {
+            //Desabilitar uma imagem de vida do canvas
+            vidasPlayer[vidaJogador-1].SetActive(false);
+
+            //Decrementar uma vida do player
+            vidaJogador--;
+        }
     }
 }

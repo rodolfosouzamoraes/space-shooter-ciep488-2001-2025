@@ -389,7 +389,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   txtPontuacao: {fileID: 696278813}
-  vidasPlayer: []
+  vidasPlayer:
+  - {fileID: 361899962}
+  - {fileID: 424506413}
+  - {fileID: 2143965856}
 --- !u!1 &424506413
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,6 +918,7 @@ GameObject:
   - component: {fileID: 977402473}
   - component: {fileID: 977402475}
   - component: {fileID: 977402474}
+  - component: {fileID: 977402476}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1028,6 +1032,19 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.41
+--- !u!114 &977402476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977402469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89a9147a7cbd78a4f99229f28531042f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosao: {fileID: 1111039839746714250, guid: 89719e3342644564e8360136f2cf5b98, type: 3}
 --- !u!1 &1726109951
 GameObject:
   m_ObjectHideFlags: 0

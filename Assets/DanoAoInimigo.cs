@@ -25,6 +25,14 @@ public class DanoAoInimigo : MonoBehaviour
                 DestruirInimigo();
             }
         }
+        else if(colisao.gameObject.tag == "Player")
+        {
+            //Decrementar a vida do jogador
+            FindFirstObjectByType<CanvasGameMng>().DecrementarVidaJogador();
+
+            //Destruir o inimigo
+            DestruirInimigo();
+        }
     }
 
     public void DestruirInimigo()
