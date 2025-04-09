@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DanoAoInimigo : MonoBehaviour
 {
-    private float vida = 100; //Vida total do inimigo
+    public float vida = 100; //Vida total do inimigo
     public GameObject explosao; //GameObject da explosao 
     public GameObject objetoPontuacao; //GameObject da pontuação
 
