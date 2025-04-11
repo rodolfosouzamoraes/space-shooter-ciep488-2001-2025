@@ -48,6 +48,9 @@ public class CanvasGameMng : MonoBehaviour
 
             //Decrementar uma vida do player
             vidaJogador--;
+
+            //Reiniciar nivel da nave
+            FindFirstObjectByType<AtirarLaser>().RemoverNiveis();
         }
     }
 }

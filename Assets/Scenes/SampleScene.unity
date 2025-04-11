@@ -969,6 +969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laser: {fileID: 3051557134161954587, guid: d87a8ce8273729d459a1d3e9841aaf23, type: 3}
   fireRate: 0.1
+  nivelLaser: 1
 --- !u!50 &977402474
 Rigidbody2D:
   serializedVersion: 5
@@ -1228,6 +1229,52 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 30, y: 30, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1753965525
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1753965527}
+  - component: {fileID: 1753965526}
+  m_Layer: 0
+  m_Name: InstanciarPowerUpLaser
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1753965526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753965525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58dbb7fe8f0feb4418719a0a2f35995e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objeto: {fileID: 8304260561449975023, guid: ede70e9ba2301ec49b1a6ebc778d359f, type: 3}
+  tempoSurgimento: 20
+--- !u!4 &1753965527
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753965525}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1543,6 +1590,7 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 977402471}
   - {fileID: 1976219444}
+  - {fileID: 1753965527}
   - {fileID: 2008268603}
   - {fileID: 372910318}
   - {fileID: 349229503}
