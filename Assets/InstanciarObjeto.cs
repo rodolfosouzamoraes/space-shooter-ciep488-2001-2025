@@ -4,7 +4,7 @@ public class InstanciarObjeto : MonoBehaviour
 {
     public GameObject objeto; //Objeto a ser instanciado
     public float tempoSurgimento; //Tempo para surgir cada objeto novo
-    private float tempoEspera; //Tempo para permitir surgir cada objeto novo
+    protected float tempoEspera; //Tempo para permitir surgir cada objeto novo
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
