@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AtirarLaser : MonoBehaviour
@@ -6,6 +7,7 @@ public class AtirarLaser : MonoBehaviour
     public float fireRate; //Tempo de tiro da nave
     private float tempoEspera; //Tempo de espera para o proximo tiro
     public int nivelLaser = 1;
+    public int nivelPoderLaser = 0;
 
     // Update is called once per frame
     void Update()
@@ -43,16 +45,26 @@ public class AtirarLaser : MonoBehaviour
         Vector3 novaPosicao = transform.position + new Vector3(x, y, 0);
         novoLaserEsquerda.transform.position = novaPosicao;
 
+        //Definir o poder do laser instanciado
+        novoLaserEsquerda.GetComponent<PoderLaser>().DefinirPoderLaser(nivelPoderLaser);
+
+
         //Instanciar o laser na direita
         GameObject novoLaserDireita = Instantiate(laser);
         novaPosicao = transform.position + new Vector3(x*-1, y, 0);
         novoLaserDireita.transform.position = novaPosicao;
+
+        //Definir o poder do laser instanciado
+        novoLaserDireita.GetComponent<PoderLaser>().DefinirPoderLaser(nivelPoderLaser);
     }
 
     private void Atirar()
     {
         //Instanciar o laser no jogo
         GameObject novoLaser = Instantiate(laser);
+
+        //Definir o poder do laser instanciado
+        novoLaser.GetComponent<PoderLaser>().DefinirPoderLaser(nivelPoderLaser);
 
         //Posiciona o laser na frente da nave
         novoLaser.transform.position = transform.position + Vector3.up;
@@ -80,5 +92,26 @@ public class AtirarLaser : MonoBehaviour
 
         //Instanciar os lasers do nivel 5
         InstanciarLaserDuplo(-0.74f, -0.018f);
+    }
+
+    public void HabilitarNivelLaser(int nivel)
+    {
+        //Atribuir o nivel do poder do laser
+        nivelPoderLaser = nivel;
+
+        //Parar todas as coroutines que estejam executando do script
+        StopAllCoroutines();
+
+        //Contar um tempo para poder voltar ao laser normal
+        StartCoroutine(ReiniciarPoderLaser());
+    }
+
+    IEnumerator ReiniciarPoderLaser()
+    {
+        //Esperar 3 segundos para poder resetar o laser
+        yield return new WaitForSeconds(3f);
+
+        //Resetar o nivel do poder do laser
+        nivelPoderLaser = 0;
     }
 }

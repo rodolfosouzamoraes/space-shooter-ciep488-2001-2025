@@ -12,8 +12,11 @@ public class DanoAoInimigo : MonoBehaviour
         //Verificar se foi o laser do player que colidiu
         if(colisao.gameObject.tag == "LaserPlayer")
         {
+            //Obter o valor do dano a ser tirado do inimigo
+            PoderLaser poderLaser = colisao.GetComponent<PoderLaser>();
+
             //Decrementar a vida do inimigo
-            vida -= 25;
+            vida -= poderLaser.valorDanoAtual;
 
             //Destruir o laser que colidiu com o inimigo
             Destroy(colisao.gameObject);

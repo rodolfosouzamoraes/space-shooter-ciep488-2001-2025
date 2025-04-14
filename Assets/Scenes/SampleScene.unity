@@ -605,6 +605,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &606622830
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 606622832}
+  - component: {fileID: 606622831}
+  m_Layer: 0
+  m_Name: InstanciarPowerUpPoderLaser
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &606622831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606622830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58dbb7fe8f0feb4418719a0a2f35995e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objeto: {fileID: 5568145168386429041, guid: 702dadf8648bba14caae4c37e765641a, type: 3}
+  tempoSurgimento: 25
+--- !u!4 &606622832
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606622830}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,7 +769,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -160.17987, y: -62.5}
+  m_AnchoredPosition: {x: -160.17969, y: -62.5}
   m_SizeDelta: {x: 320.3596, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &696278813
@@ -970,6 +1016,7 @@ MonoBehaviour:
   laser: {fileID: 3051557134161954587, guid: d87a8ce8273729d459a1d3e9841aaf23, type: 3}
   fireRate: 0.1
   nivelLaser: 1
+  nivelPoderLaser: 0
 --- !u!50 &977402474
 Rigidbody2D:
   serializedVersion: 5
@@ -1636,11 +1683,12 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
-  - {fileID: 977402471}
-  - {fileID: 1976219444}
-  - {fileID: 1753965527}
-  - {fileID: 2008268603}
   - {fileID: 372910318}
   - {fileID: 349229503}
   - {fileID: 1733165716}
+  - {fileID: 1976219444}
+  - {fileID: 2008268603}
   - {fileID: 1494448167}
+  - {fileID: 1753965527}
+  - {fileID: 606622832}
+  - {fileID: 977402471}
