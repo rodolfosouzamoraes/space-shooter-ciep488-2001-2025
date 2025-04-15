@@ -8,6 +8,8 @@ public class CanvasGameMng : MonoBehaviour
 
     public GameObject[] vidasPlayer; //Os GameObjects da vida do jogador
     private int vidaJogador; //A quantidade de vida atual do jogador
+    
+    private EscudoPlayer escudoPlayer;//Variavel com a informação do escudo do jogador
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,6 +21,9 @@ public class CanvasGameMng : MonoBehaviour
 
         //Definir a quantidade de vidas que o jogador terá de inicio
         vidaJogador = vidasPlayer.Length;
+
+        //Obter a referencia do escudo do player
+        escudoPlayer = FindFirstObjectByType<EscudoPlayer>();
     }
 
     public void IncrementarPontuacao(int pontuacao)
@@ -32,6 +37,9 @@ public class CanvasGameMng : MonoBehaviour
 
     public void DecrementarVidaJogador()
     {
+        //Verificar se o jogador pode tomar dano
+        if (escudoPlayer.estaAtivo == true) return;
+
         //Verificar se o jogador tem vidas
         if(vidaJogador == 1)
         {
