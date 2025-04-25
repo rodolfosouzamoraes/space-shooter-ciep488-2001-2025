@@ -43,6 +43,14 @@ public class InstanciarInimigosZigZag : InstanciarObjeto
             //Posicionar o objeto na posição sorteada
             novoObjeto.transform.position = new Vector3(posicaoX, 7.5f, 0);
 
+            //Verificar se é inimigo o objeto
+            if(eInimigo == true)
+            {
+                //Definir pontuação do inimigo
+                int nivelJogo = canvasGameMng.nivelJogo;
+                novoObjeto.GetComponent<DanoAoInimigo>().DefinirNivelInimigo(nivelJogo);
+            }
+
             //Somar o total de objetos instanciados
             totalInstanciados++;
         } while (totalInstanciados <= maxObjetos);

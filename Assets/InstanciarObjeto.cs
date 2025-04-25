@@ -6,13 +6,21 @@ public class InstanciarObjeto : MonoBehaviour
     public float tempoSurgimento; //Tempo para surgir cada objeto novo
     protected float tempoEspera; //Tempo para permitir surgir cada objeto novo
     public bool eInimigo; //Define se o objeto é um inimigo
-    private CanvasGameMng canvasGameMng;//Referencia do canvas game mng
+    protected CanvasGameMng canvasGameMng;//Referencia do canvas game mng
+    public bool aguardarPrimeiro;//Define se o objeto deve aguardar primeiro antes de ser instanciado
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //Referenciar o CanvasGameMng
         canvasGameMng = FindFirstObjectByType<CanvasGameMng>();
+
+        //Verificar se o objeto deve esperar o tempo inicial de surgimento
+        if(aguardarPrimeiro == true)
+        {
+            //atualizar o tempo de espera
+            tempoEspera = Time.time + tempoSurgimento;
+        }
     }
 
     // Update is called once per frame
