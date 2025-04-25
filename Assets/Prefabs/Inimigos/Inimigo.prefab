@@ -152,5 +152,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0542ca878738740b2f30e66b026f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vidasInimigo:
+  - 0
+  - 100
+  - 200
+  - 300
+  - 400
+  - 500
+  - 750
+  - 1250
+  - 2000
+  corposInimigo:
+  - {fileID: 0}
+  - {fileID: 21300000, guid: e61c5dce1be34d640be2c5f786ccfd58, type: 3}
+  - {fileID: 21300000, guid: 649bd48a40711754e9cfe9ff075727bb, type: 3}
+  - {fileID: 21300000, guid: 7f04020249c006d40bfb935fa939cfd4, type: 3}
+  - {fileID: 21300000, guid: 72dbeac668d95df4cbf650f37fb47715, type: 3}
+  - {fileID: 21300000, guid: 083c7c4df9d02a44db9dac88b799dff4, type: 3}
+  - {fileID: 21300000, guid: 25d9557d5fbc5d444b86acbcf0f05d0f, type: 3}
+  - {fileID: 21300000, guid: 06e20b893cece634c9986d54fc3b8ceb, type: 3}
+  - {fileID: 21300000, guid: a79ce8c63a85f4743ac7b8fab01b4d3c, type: 3}
+  renderInimigo: {fileID: 4682863213518428463}
   explosao: {fileID: 1111039839746714250, guid: 89719e3342644564e8360136f2cf5b98, type: 3}
   objetoPontuacao: {fileID: 3193113446612318314, guid: 95e6b6ddaaf963544be8b458b5f3ad89, type: 3}

@@ -2,9 +2,25 @@ using UnityEngine;
 
 public class DanoAoInimigo : MonoBehaviour
 {
-    public float vida = 100; //Vida total do inimigo
+    public float[] vidasInimigo; //Vida total do inimigo
+    public Sprite[] corposInimigo;//As imagens do inimigo referente a seu nivel
+    public SpriteRenderer renderInimigo;//Script para manipular o render da imagem
     public GameObject explosao; //GameObject da explosao 
     public GameObject objetoPontuacao; //GameObject da pontuação
+    private float vidaAtual;//Vida correspondente ao nivel do jogo
+    private int nivelInimigo; //Nivel do inimigo correspondente ao nivel do jogo
+
+    public void DefinirNivelInimigo(int nivel)
+    {
+        //Definir a vida com relação ao nivel informado
+        vidaAtual = vidasInimigo[nivel];
+
+        //Definir o sprite do inimigo com relação ao nivel informado
+        renderInimigo.sprite = corposInimigo[nivel];
+
+        //Definir o nivel do inimigo
+        nivelInimigo = nivel;
+    }
 
     //Capta a colisao do objeto ao entrar no outro objeto
     private void OnTriggerEnter2D(Collider2D colisao)
@@ -16,13 +32,13 @@ public class DanoAoInimigo : MonoBehaviour
             PoderLaser poderLaser = colisao.GetComponent<PoderLaser>();
 
             //Decrementar a vida do inimigo
-            vida -= poderLaser.valorDanoAtual;
+            vidaAtual -= poderLaser.valorDanoAtual;
 
             //Destruir o laser que colidiu com o inimigo
             Destroy(colisao.gameObject);
 
             //Verificar se acabou a vida do inimigo
-            if(vida <= 0)
+            if(vidaAtual <= 0)
             {
                 //Destruir o inimigo
                 DestruirInimigo();
@@ -54,6 +70,9 @@ public class DanoAoInimigo : MonoBehaviour
 
             //Posicionar a pontuacao na mesma posicao no inimigo
             novaPontuacao.transform.position = transform.position;
+
+            //Definir pontuação a ser gerada pelo inimigo
+            novaPontuacao.GetComponent<ColetarPontos>().pontuacao = (int)vidasInimigo[nivelInimigo];
         }
 
         //Destruir o objeto

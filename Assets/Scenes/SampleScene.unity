@@ -393,6 +393,9 @@ MonoBehaviour:
   - {fileID: 361899962}
   - {fileID: 424506413}
   - {fileID: 2143965856}
+  txtNivelJogo: {fileID: 1875605052}
+  nivelJogo: 0
+  tempoDificuldade: 1
 --- !u!1 &424506413
 GameObject:
   m_ObjectHideFlags: 0

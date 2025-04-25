@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +9,10 @@ public class CanvasGameMng : MonoBehaviour
 
     public GameObject[] vidasPlayer; //Os GameObjects da vida do jogador
     private int vidaJogador; //A quantidade de vida atual do jogador
+
+    public TextMeshProUGUI txtNivelJogo;
+    public int nivelJogo;//Define o nivel dos inimigos no jogo
+    public float tempoDificuldade;//tempo para aumentar o nivel do jogo
     
     private EscudoPlayer escudoPlayer;//Variavel com a informação do escudo do jogador
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,6 +29,15 @@ public class CanvasGameMng : MonoBehaviour
 
         //Obter a referencia do escudo do player
         escudoPlayer = FindFirstObjectByType<EscudoPlayer>();
+
+        //Definir o nivel 1
+        nivelJogo = 1;
+
+        //Atualizar texto
+        txtNivelJogo.text = $"Nv. {nivelJogo}";
+
+        //Iniciar contagem de nivel
+        StartCoroutine(IncrementarDificuldade());
     }
 
     public void IncrementarPontuacao(int pontuacao)
@@ -59,6 +73,31 @@ public class CanvasGameMng : MonoBehaviour
 
             //Reiniciar nivel da nave
             FindFirstObjectByType<AtirarLaser>().RemoverNiveis();
+        }
+    }
+
+    IEnumerator IncrementarDificuldade()
+    {
+        //Repetir até que o nível seja o máximo
+        while (true)
+        {
+            //Esperar um tempo para poder subir o nivel do jogo
+            yield return new WaitForSeconds(tempoDificuldade);
+
+            //Aumentar o nivel do jogo
+            nivelJogo++;
+
+            //Verificar se chegou no nivel máximo
+            if (nivelJogo == 8) {
+                //Atualizo o texo para o nível máximo
+                txtNivelJogo.text = "Nv. Max";
+
+                //Parar a repetição
+                break;
+            }
+
+            //Atualizar o texto para o nivel atual
+            txtNivelJogo.text = $"Nv. {nivelJogo}";
         }
     }
 }
