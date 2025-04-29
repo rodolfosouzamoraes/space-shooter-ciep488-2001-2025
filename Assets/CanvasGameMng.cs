@@ -15,6 +15,8 @@ public class CanvasGameMng : MonoBehaviour
     public float tempoDificuldade;//tempo para aumentar o nivel do jogo
     
     private EscudoPlayer escudoPlayer;//Variavel com a informação do escudo do jogador
+
+    public PainelVidaChefe painelVidaChefe;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -38,6 +40,9 @@ public class CanvasGameMng : MonoBehaviour
 
         //Iniciar contagem de nivel
         StartCoroutine(IncrementarDificuldade());
+
+        //Ocultar a vida do chefe
+        //OcultarVidaChefe();
     }
 
     public void IncrementarPontuacao(int pontuacao)
@@ -99,5 +104,18 @@ public class CanvasGameMng : MonoBehaviour
             //Atualizar o texto para o nivel atual
             txtNivelJogo.text = $"Nv. {nivelJogo}";
         }
+    }
+
+    /// <summary>
+    /// Exibe a vida do chefe quando acionado
+    /// </summary>
+    public void ExibirVidaChefe(GameObject chefe)
+    {
+        painelVidaChefe.ExibirVidaChefe(chefe);
+    }
+
+    public void OcultarVidaChefe()
+    {
+        painelVidaChefe.pnlVidaChefe.SetActive(false);
     }
 }

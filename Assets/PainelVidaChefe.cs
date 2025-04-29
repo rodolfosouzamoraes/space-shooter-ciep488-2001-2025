@@ -25,9 +25,6 @@ public class PainelVidaChefe : MonoBehaviour
 
         //Atualizar o texto com a vida atual do chefe
         txtVidaChefe.text = $"{vidaAtualChefe}";
-
-        //Desativar o painel quando o jogo começar
-        pnlVidaChefe.SetActive(false);
     }
 
     /// <summary>
@@ -54,9 +51,32 @@ public class PainelVidaChefe : MonoBehaviour
         chefeAtivo = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void DestruirChefe()
     {
-        
+        //Acessar o script do chefe para poder destruílo
+        //...
+
+        //Desativar o painel do chefe
+        pnlVidaChefe.SetActive (false);
+
+        //Definir que o chefe não está mais ativo
+        chefeAtivo = false;
+    }
+
+    public void DecrementarVidaChefe(float dano)
+    {
+        //Decrementar a vida do chefe
+        vidaAtualChefe -= dano;
+
+        //Verificar se a vida acabou
+        if (vidaAtualChefe <= 0)
+        {
+            //Destruir o chefe
+            DestruirChefe();
+        }
+
+        //Atualizar o slider e o texto do chefe
+        sldVidaChefe.value = vidaAtualChefe;
+        txtVidaChefe.text = $"{vidaAtualChefe}";
     }
 }
