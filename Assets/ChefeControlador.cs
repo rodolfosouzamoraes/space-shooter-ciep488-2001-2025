@@ -9,6 +9,8 @@ public class ChefeControlador : MonoBehaviour
     private int totalMovimentos;
     private float anguloAlvo;
     private CanvasGameMng canvasGame;
+    private Vector3 coordenadaEsquerda;
+    private Vector3 coordenadaDireita;
 
     private void Start()
     {
@@ -23,6 +25,10 @@ public class ChefeControlador : MonoBehaviour
 
         //Exibir o painel do chefe
         canvasGame.ExibirVidaChefe(gameObject);
+
+        //Definir a coordenada esquerda e direita para onde o chefe deve ir
+        coordenadaEsquerda = new Vector3(-9.5f, 0, 0);
+        coordenadaDireita = new Vector3(9.5f, 0, 0);
     }
 
     // Update is called once per frame
@@ -33,6 +39,16 @@ public class ChefeControlador : MonoBehaviour
         {
             //Movimentar o chefe até a posição inicial
             MovimentarParaPosicaoInicial();
+        }
+        else if(totalMovimentos != 3)
+        {
+            //Movimentar horizontalmente
+            MovimentarHorizontalmente();
+        }
+        else
+        {
+            //Rotacionar o chefe
+            Rotacionar();
         }
     }
 
@@ -50,6 +66,82 @@ public class ChefeControlador : MonoBehaviour
         {
             //Definir que chegou na posição
             chegouNaPosicaoInicial = true;
+        }
+    }
+
+    private void MovimentarEsquerdaOuDireita(Vector3 coordenadaAlvo)
+    {
+        //Movimentar para coordenada alvo
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            coordenadaAlvo,
+            velocidade * Time.deltaTime
+        );
+
+        //Verificar se chegou no alvo
+        if (Vector3.Distance(transform.position, coordenadaAlvo) < 0.001f)
+        {
+            //Definir que chegou no alvo
+            chegouNaEsquerdaOuDireita = !chegouNaEsquerdaOuDireita;
+
+            //Incrementar no total de movimentacoes
+            totalMovimentos++;
+        }
+    }
+
+    private void MovimentarHorizontalmente()
+    {
+        //Verificar se chegou na extremidade da esquerda
+        if(chegouNaEsquerdaOuDireita == false)
+        {
+            MovimentarEsquerdaOuDireita(coordenadaEsquerda);
+        }
+        else
+        {
+            MovimentarEsquerdaOuDireita(coordenadaDireita);
+        }
+    }
+
+    private void Rotacionar()
+    {
+        //Definir a rotação alvo do objeto
+        var rotacaoAlvo = Quaternion.Euler(new Vector3(0, 0, anguloAlvo));
+
+        //Rotacionar o objeto
+        transform.rotation = Quaternion.RotateTowards(
+            transform.rotation,
+            rotacaoAlvo,
+            velocidade * Time.deltaTime * 50
+        );
+
+        //Verificar se chegou na rotação alvo
+        if (transform.rotation == rotacaoAlvo) 
+        {
+            //Alterar o angulo alvo
+            anguloAlvo = anguloAlvo == 90 ? 0 : 90;
+
+            //Zerar o total de movimentações
+            totalMovimentos = 0;
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D colisao)
+    {
+        //Verificar qual tag do objeto que colidiu
+        switch (colisao.gameObject.tag) {
+            case "LaserPlayer":
+                //Obter o script do laser com a info do dano
+                PoderLaser laserPlayer = colisao.GetComponent<PoderLaser>();
+
+                //Decrementar a vida do chefe
+                canvasGame.painelVidaChefe.DecrementarVidaChefe(laserPlayer.valorDanoAtual);
+
+                //Destruir o laser
+                Destroy(colisao.gameObject);
+                break;
+            case "Player":
+                break;
         }
     }
 }
