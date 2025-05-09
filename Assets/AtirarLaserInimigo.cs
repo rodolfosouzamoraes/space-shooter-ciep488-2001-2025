@@ -16,7 +16,7 @@ public class AtirarLaserInimigo : MonoBehaviour
             GameObject novoLaser = Instantiate(laserInimigo);
 
             //Posicionar o laser no inimigo
-            novoLaser.transform.position = transform.position + new Vector3(0,-1.25f,0);
+            novoLaser.transform.position = transform.position;
             novoLaser.transform.rotation = transform.rotation;
 
             //Atualizar o tempo de espera para o proximo tiro

@@ -17,6 +17,8 @@ public class CanvasGameMng : MonoBehaviour
     private EscudoPlayer escudoPlayer;//Variavel com a informação do escudo do jogador
 
     public PainelVidaChefe painelVidaChefe;
+
+    public GameObject pnlTopo;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -117,5 +119,20 @@ public class CanvasGameMng : MonoBehaviour
     public void OcultarVidaChefe()
     {
         painelVidaChefe.pnlVidaChefe.SetActive(false);
+    }
+
+    public void ExibirTelaFimDeJogo()
+    {
+        //Matar o jogador
+        FindFirstObjectByType<DanoPlayer>().DestruirPlayer();
+
+        //Ocultar o painel topo
+        pnlTopo.SetActive(false);
+
+        //Exibir painel Game Over
+        //...
+
+        //Salvar dados
+        //...
     }
 }
