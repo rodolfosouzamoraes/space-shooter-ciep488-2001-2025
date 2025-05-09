@@ -10,7 +10,7 @@ public class PainelVidaChefe : MonoBehaviour
     public float vidaMaximaChefe;
     private float vidaAtualChefe;
     private GameObject chefe;
-    private bool chefeAtivo;
+    public bool chefeAtivo;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -54,7 +54,7 @@ public class PainelVidaChefe : MonoBehaviour
     private void DestruirChefe()
     {
         //Acessar o script do chefe para poder destruílo
-        //...
+        chefe.GetComponent<ChefeControlador>().DestruirChefe();
 
         //Desativar o painel do chefe
         pnlVidaChefe.SetActive (false);

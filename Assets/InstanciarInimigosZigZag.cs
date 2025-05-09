@@ -12,8 +12,10 @@ public class InstanciarInimigosZigZag : InstanciarObjeto
     // Update is called once per frame
     void Update()
     {
+        if (canvasGameMng.painelVidaChefe.chefeAtivo == true && eInimigo == true) return;
+
         //A lógica de instanciar inimigos de tempo em tempo
-        if(Time.time > tempoEspera)
+        if (Time.time > tempoEspera)
         {
             //Atualiza tempo de espera
             tempoEspera = Time.time + tempoSurgimento;

@@ -44,7 +44,7 @@ public class CanvasGameMng : MonoBehaviour
         StartCoroutine(IncrementarDificuldade());
 
         //Ocultar a vida do chefe
-        //OcultarVidaChefe();
+        OcultarVidaChefe();
     }
 
     public void IncrementarPontuacao(int pontuacao)

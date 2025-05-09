@@ -26,6 +26,9 @@ public class InstanciarObjeto : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Verificar se o chefe já foi instanciado
+        if (canvasGameMng.painelVidaChefe.chefeAtivo == true && eInimigo == true) return; 
+
         //Verificar o tempo de espera para poder instanciar um objeto novo
         if (Time.time > tempoEspera) 
         { 
@@ -42,7 +45,7 @@ public class InstanciarObjeto : MonoBehaviour
             if (eInimigo == true) {
                 //Definir o nivel do inimigo
                 int nivelJogo = canvasGameMng.nivelJogo;
-                novoObjeto.GetComponent<DanoAoInimigo>().DefinirNivelInimigo(nivelJogo);
+                novoObjeto.GetComponent<DanoAoInimigo>()?.DefinirNivelInimigo(nivelJogo);
             }
 
             //Posicionar o objeto na coordenada X e Y
