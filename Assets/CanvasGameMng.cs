@@ -1,24 +1,31 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CanvasGameMng : MonoBehaviour
 {
+    private EscudoPlayer escudoPlayer;//Variavel com a informação do escudo do jogador
+
+    [Header("Config Painel Topo")]
     public TextMeshProUGUI txtPontuacao; //Variável para manipular o texto da pontuação
     private float pontuacao;//Variavel para armazenar a pontuacao do jogo
-
     public GameObject[] vidasPlayer; //Os GameObjects da vida do jogador
     private int vidaJogador; //A quantidade de vida atual do jogador
-
     public TextMeshProUGUI txtNivelJogo;
     public int nivelJogo;//Define o nivel dos inimigos no jogo
     public float tempoDificuldade;//tempo para aumentar o nivel do jogo
-    
-    private EscudoPlayer escudoPlayer;//Variavel com a informação do escudo do jogador
+    public GameObject pnlTopo;
 
+    [Header("Config Painel Game Over")]
+    public GameObject pnlGameOver;
+    public TextMeshProUGUI txtPontuacaoAtual;
+    public TextMeshProUGUI txtMelhorPontuacao;
+
+    [Header("Config Painel Vida Chefe")]
     public PainelVidaChefe painelVidaChefe;
 
-    public GameObject pnlTopo;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -64,11 +71,8 @@ public class CanvasGameMng : MonoBehaviour
         //Verificar se o jogador tem vidas
         if(vidaJogador == 1)
         {
-            //Desabilitar a ultima vida
-            vidasPlayer[0].SetActive(false);
-
-            //Matar Jogador
-            FindFirstObjectByType<DanoPlayer>().DestruirPlayer();
+            //Exibir a tela de game over
+            ExibirTelaFimDeJogo();
         }
         else
         {
@@ -123,6 +127,13 @@ public class CanvasGameMng : MonoBehaviour
 
     public void ExibirTelaFimDeJogo()
     {
+        //Desabilitar todas as vidas
+        foreach (var vida in vidasPlayer) {
+            vida?.SetActive(false);
+        }        
+
+        vidaJogador = 0;
+
         //Matar o jogador
         FindFirstObjectByType<DanoPlayer>().DestruirPlayer();
 
@@ -130,9 +141,22 @@ public class CanvasGameMng : MonoBehaviour
         pnlTopo.SetActive(false);
 
         //Exibir painel Game Over
-        //...
+        pnlGameOver.SetActive(true);
+
+        //Configurar dados no painel game over
+        txtPontuacaoAtual.text = $"{pontuacao}";
 
         //Salvar dados
         //...
+
+        //Atualizar o texto de melhor pontuacao
+        //...
+    }
+
+    public void ReiniciarJogo()
+    {
+        //Reiniciar a cena atual com base no código da cena
+        int codigoCena = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(codigoCena);
     }
 }

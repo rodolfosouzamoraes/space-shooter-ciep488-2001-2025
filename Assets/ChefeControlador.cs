@@ -181,6 +181,6 @@ public class ChefeControlador : MonoBehaviour
         GameObject novaExplosao = Instantiate(explosao);
         novaExplosao.transform.localScale = new Vector3(20,20,20); 
         novaExplosao.transform.position = transform.position;
-        Destroy(gameObject);
+        Destroy(chefeMain);
     }
 }
