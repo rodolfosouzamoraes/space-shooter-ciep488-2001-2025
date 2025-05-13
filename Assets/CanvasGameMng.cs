@@ -9,7 +9,7 @@ public class CanvasGameMng : MonoBehaviour
 
     [Header("Config Painel Topo")]
     public TextMeshProUGUI txtPontuacao; //Variável para manipular o texto da pontuação
-    private float pontuacao;//Variavel para armazenar a pontuacao do jogo
+    private int pontuacao;//Variavel para armazenar a pontuacao do jogo
     public GameObject[] vidasPlayer; //Os GameObjects da vida do jogador
     private int vidaJogador; //A quantidade de vida atual do jogador
     public TextMeshProUGUI txtNivelJogo;
@@ -147,10 +147,10 @@ public class CanvasGameMng : MonoBehaviour
         txtPontuacaoAtual.text = $"{pontuacao}";
 
         //Salvar dados
-        //...
+        DBMng.SalvarPontuacao(pontuacao);
 
         //Atualizar o texto de melhor pontuacao
-        //...
+        txtMelhorPontuacao.text = $"{DBMng.BuscarPontuacaoSalva()}";
     }
 
     public void ReiniciarJogo()
