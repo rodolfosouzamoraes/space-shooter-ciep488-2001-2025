@@ -159,4 +159,9 @@ public class CanvasGameMng : MonoBehaviour
         int codigoCena = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(codigoCena);
     }
+
+    public void VoltarMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
