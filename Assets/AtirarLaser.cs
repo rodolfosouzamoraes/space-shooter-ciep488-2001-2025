@@ -8,6 +8,7 @@ public class AtirarLaser : MonoBehaviour
     private float tempoEspera; //Tempo de espera para o proximo tiro
     public int nivelLaser = 1;
     public int nivelPoderLaser = 0;
+    public AudioPlayer audioPlayer;
 
     // Update is called once per frame
     void Update()
@@ -60,6 +61,9 @@ public class AtirarLaser : MonoBehaviour
 
     private void Atirar()
     {
+        //Tocar o audio do laser
+        audioPlayer.TocarAudioLaser();
+
         //Instanciar o laser no jogo
         GameObject novoLaser = Instantiate(laser);
 
