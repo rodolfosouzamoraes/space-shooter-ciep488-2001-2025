@@ -25,6 +25,12 @@ public class CanvasGameMng : MonoBehaviour
     [Header("Config Painel Vida Chefe")]
     public PainelVidaChefe painelVidaChefe;
 
+    [Header("Config Audio Game")]
+    public AudioClip[] audiosGame;
+    public AudioClip audioChefe;
+    private AudioSource audioSource;
+    private int idAudioGame;
+
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -48,7 +54,15 @@ public class CanvasGameMng : MonoBehaviour
         txtNivelJogo.text = $"Nv. {nivelJogo}";
 
         //Iniciar contagem de nivel
-        StartCoroutine(IncrementarDificuldade());
+        StartCoroutine(IncrementarDificuldade()); 
+
+        //Sortear audio do game
+        idAudioGame = new System.Random().Next(0, audiosGame.Length);
+        //Configurar o audio source
+        audioSource = GetComponent<AudioSource>();
+        //Tocar o audio
+        audioSource.clip = audiosGame[idAudioGame];
+        audioSource.Play();
 
         //Ocultar a vida do chefe
         OcultarVidaChefe();
@@ -118,11 +132,20 @@ public class CanvasGameMng : MonoBehaviour
     public void ExibirVidaChefe(GameObject chefe)
     {
         painelVidaChefe.ExibirVidaChefe(chefe);
+
+        //Trocar o audio
+        audioSource.Stop();
+        audioSource.clip = audioChefe;
+        audioSource.Play();
     }
 
     public void OcultarVidaChefe()
     {
         painelVidaChefe.pnlVidaChefe.SetActive(false);
+        //Trocar o audio
+        audioSource.Stop();
+        audioSource.clip = audiosGame[idAudioGame];
+        audioSource.Play();
     }
 
     public void ExibirTelaFimDeJogo()

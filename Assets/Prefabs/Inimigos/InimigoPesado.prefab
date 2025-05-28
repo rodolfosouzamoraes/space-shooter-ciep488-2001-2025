@@ -190,3 +190,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserInimigo: {fileID: 3051557134161954587, guid: 8e793fdc9bb6264419c0cbc481c5dc56, type: 3}
   tempoDeTiro: 2
+  audioLaser: {fileID: 8300000, guid: fbb8ffb8eeb5bbe4b905a05f5da5a8b0, type: 3}
