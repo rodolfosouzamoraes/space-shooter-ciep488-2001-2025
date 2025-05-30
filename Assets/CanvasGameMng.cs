@@ -68,6 +68,14 @@ public class CanvasGameMng : MonoBehaviour
         OcultarVidaChefe();
     }
 
+    private void Update()
+    {
+        //Voltar ao menu ao teclar ESC
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            VoltarMenu();
+        }
+    }
+
     public void IncrementarPontuacao(int pontuacao)
     {
         //Incrementar na variavel o ponto
